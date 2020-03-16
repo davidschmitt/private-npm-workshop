@@ -1,6 +1,4 @@
 #
-# Now we are ready to start our docker container using the docker image
-# We also mount the volume we created in the last step
+# Build the docker image for the private NPM repo server
 #
-docker run --restart always -d --name vrdcontainer -p "443:4873/tcp" \
-  -v vrdvolume://vrdmount "vrdimage:latest"
+docker build -t "vrdimage:latest" -f Dockerfile.vrd .

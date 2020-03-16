@@ -1,16 +1,9 @@
 #
-# Add logging related settings to the Verdaccio main configuration
+# Create a helper script to configure NPM users/passwords
 #
-cat <<"EOF" >>Dockerfile
+sed -e 's/^  //' <<"EOF" >vrdpasswd
+  #!/bin/bash
 
-RUN printf "%s\\n" \
-  "middlewares:" \
-  "  audit:" \
-  "    enabled: true" \
-  "" \
-  "# log settings" \
-  "logs:" \
-  "  - { type: stdout, format: pretty, level: http }" \
-  >>$VCFG/config.yaml
+  /bin/htpasswd /vrdmount/.htpasswd "$1"
 
 EOF

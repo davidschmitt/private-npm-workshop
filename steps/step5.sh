@@ -1,18 +1,20 @@
 #
-# Add commands to configure a certificate signing request for the NPM repo 
-# HTTPS server
+# Add HTTPS server related settings to the Verdaccio configuration
 #
-cat <<"EOF" >>Dockerfile
+sed -e 's/^  //' <<"EOF" >>config.yaml
 
-RUN printf "%s\\n" \
-  "[dn]" \
-  "CN=localhost" \
-  "[req]" \
-  "distinguished_name = dn" \
-  "[EXT]" \
-  "subjectAltName=DNS:localhost" \
-  "keyUsage=digitalSignature" \
-  "extendedKeyUsage=serverAuth" \
-  >/tmp/certreq.cfg
+  listen: https://0.0.0.0:4873/
+
+  https:
+    ca:   /home/vrduser/.config/verdaccio/vrd-csr.pem
+    cert: /home/vrduser/.config/verdaccio/vrd-cert.pem
+    key:  /home/vrduser/.config/verdaccio/vrd-key.pem
+
+  # Set to 0 in case 60 is not enough.
+  server:
+    keepAliveTimeout: 60
+
+  web:
+    title: Workshop NPM Registry
 
 EOF

@@ -1,6 +1,5 @@
 #
-# In order to access the private NPM repository we need to add credentials
-# for trusted users.  When prompted, pick a password for the pubuser who
-# needs write access to publish packages (e.g. "workshop1")
+# We don't want the packages to disappear every time we re-build the image
+# So here we create a docker volume to hold our published packages.
 #
-docker exec -it vrdcontainer //usr/bin/vrdpasswd pubuser
+docker volume create vrdvolume

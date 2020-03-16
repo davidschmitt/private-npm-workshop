@@ -1,18 +1,19 @@
 #
-# Create a helper script used when setting repository user credentials.
+# Create the Dockerfile for the Verdaccio server.
 #
-cat <<"EOF" >>Dockerfile
+#   * Create the package storage mount directory
+#   * Adjust permissions on that storage mount
+#   * Install the Verdaccio software
+#   * Create the Verdaccio configuration directory
+#
+sed -e 's/^  //' <<"EOF" >Dockerfile.vrd
 
-RUN printf "%s\\n" \
-  "#!/bin/bash" \
-  "if [ ! -f $VMNT/.htpasswd ]" \
-  "then" \
-  "  touch $VMNT/.htpasswd" \
-  "  chown $VUSER:$VUSER $VMNT/.htpasswd" \
-  "  chmod 600 $VMNT/.htpasswd" \
-  "fi" \
-  "/bin/htpasswd $VMNT/.htpasswd \$1" \
-  >/usr/bin/vrdpasswd \
-&& chmod 755 /usr/bin/vrdpasswd
+  FROM vrdbase:latest
+  RUN mkdir /vrdmount \
+    && chown vrduser /vrdmount \
+    && chmod 755 /vrdmount \
+    && npm install --unsafe-perm -g verdaccio@4.4.2 \
+    && chown -R vrduser /usr/lib/node_modules \
+    && mkdir -p /home/vrduser/.config/verdaccio
 
 EOF

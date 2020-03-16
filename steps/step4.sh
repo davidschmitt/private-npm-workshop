@@ -1,20 +1,24 @@
 #
-# Here we add commands to:
+# Our private NPM repository will be running [Verdaccio](https://verdaccio.org).
 #
-# * Create a non-privileged user to run the NPM repo
-# * Create the volume mount point for published packages
-# * Adjust permissions so the non-privileged user can adjust global node_modules
-# * Install the private NPM repo software: [Verdaccio](https://verdaccio.org)
+# Begin to create a configuration file we can copy into our Docker image.
 #
-# Note: the --unsafe-perm is needed because we are installing packages as root here.
-#
-cat <<"EOF" >>Dockerfile
+sed -e 's/^  //' <<"EOF" >config.yaml
 
-RUN useradd $VUSER \
-  && mkdir $VMNT \
-  && chown $VUSER $VMNT \
-  && chmod 755 $VMNT \
-  && chown -R $VUSER /usr/lib/node_modules \
-  && npm install --unsafe-perm -g verdaccio
+  # Look here for more config file examples:
+  # https://github.com/verdaccio/verdaccio/tree/master/conf
+
+  # path to a directory with all packages
+  storage: /vrdmount/storage
+
+  # path to a directory with plugins to include
+  plugins: /vrdmount/plugins
+
+  auth:
+    htpasswd:
+      # Location of user credentials
+      file: /vrdmount/.htpasswd
+      # Set this to -1 to disable auto-registration
+      max_users: -1
 
 EOF

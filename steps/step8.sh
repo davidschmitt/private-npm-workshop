@@ -1,23 +1,16 @@
 #
-# Add web related settings to the Verdaccio main configuration
+# The NPM HTTPS server needs a signed certificate.
+# Create the certificate configuration here.
 #
-cat <<"EOF" >>Dockerfile
+sed -e 's/^  //' <<"EOF" >certreq.cfg
 
-RUN printf "%s\\n" \
-  "" \
-  "listen: https://0.0.0.0:4873/" \
-  "" \
-  "https:" \
-  "  key: $VCFG/$VRD-key.pem" \
-  "  cert: $VCFG/$VRD-cert.pem" \
-  "  ca: $VCFG/$VRD-csr.pem" \
-  "" \
-  "# Set to 0 in case 60 is not enough." \
-  "server:" \
-  "  keepAliveTimeout: 60" \
-  "" \
-  "web:" \
-  "  title: Workshop NPM Registry" \
-  >>$VCFG/config.yaml
+  [dn]
+  CN=localhost
+  [req]
+  distinguished_name=dn
+  [EXT]
+  subjectAltName=DNS:localhost
+  keyUsage=digitalSignature
+  extendedKeyUsage=serverAuth
 
 EOF

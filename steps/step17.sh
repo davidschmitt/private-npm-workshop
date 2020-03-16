@@ -1,5 +1,5 @@
 #
-# When prompted, pick a password for the blduser who
-# needs read-only access to published packages (e.g. "workshop1")
+# Start the private NPM repo container and mount the storage volume
 #
-docker exec -it vrdcontainer //usr/bin/vrdpasswd blduser
+docker run --restart always -d --name vrdcontainer -p "443:4873/tcp" \
+  -v vrdvolume://vrdmount "vrdimage:latest"

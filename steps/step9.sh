@@ -1,20 +1,17 @@
 #
-# Package related settings to the Verdaccio main configuration
+# Create a startup script that ensures all directories exist
 #
-cat <<"EOF" >>Dockerfile
+sed -e 's/^  //' <<"EOF" >vrdstart
+  #!/bin/bash
 
-RUN printf "%s\\n" \
-  "" \
-  "# a list of other known repositories we can talk to" \
-  "uplinks:" \
-  "  npmjs:" \
-  "    url: https://registry.npmjs.org/" \
-  "" \
-  "packages:" \
-  "  '@workshop/*':" \
-  "    access: \\$authenticated" \
-  "    publish: pubuser" \
-  "    unpublish: pubuser" \
-  >>$VCFG/config.yaml
+  mkdir -p /vrdmount/storage
+  mkdir -p /vrdmount/plugins
+  PFILE=/vrdmount/.htpasswd
+  if [ ! -f "$PFILE" ]
+  then
+    touch "$PFILE"
+    chmod 600 "$PFILE"
+  fi
+  /usr/bin/verdaccio
 
 EOF

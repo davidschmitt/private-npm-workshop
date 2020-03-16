@@ -1,5 +1,12 @@
 #
-# We don't want the packages to disappear every time we re-build the image
-# So here we create a docker volume to hold our published packages.
+# Since all earlier commands were performed as root,
+# ensure file ownership is changed to the non-privileged user
 #
-docker volume create vrdvolume
+sed -e 's/^  //' <<"EOF" >>Dockerfile.vrd
+
+  RUN chown -R vrduser:vrduser /home/vrduser
+  USER vrduser
+  WORKDIR /home/vrduser
+  CMD [ "/usr/bin/vrdstart" ]
+
+EOF

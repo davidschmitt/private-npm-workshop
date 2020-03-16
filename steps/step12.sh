@@ -1,15 +1,14 @@
 #
-# Since all the earlier steps were performed as root, we must adjust things
-# so the non-privileged user owns all configuration files
+# Add commands copy the Verdaccio configuration and
+# certificate request files into the image
 #
-cat <<"EOF" >>Dockerfile
+sed -e 's/^  //' <<"EOF" >>Dockerfile.vrd
 
-RUN chown -R $VUSER:$VUSER /home/$VUSER
+  COPY config.yaml /home/vrduser/.config/verdaccio/
+  COPY certreq.cfg /tmp/
+  COPY vrdstart /usr/bin/
+  COPY vrdpasswd /usr/bin/
 
-USER $VUSER
-
-WORKDIR /home/$VUSER
-
-CMD [ "/usr/bin/verdaccio" ]
+  RUN chmod 755 /usr/bin/vrdstart /usr/bin/vrdpasswd
 
 EOF
