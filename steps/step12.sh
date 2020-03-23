@@ -2,12 +2,12 @@
 # Add commands copy the Verdaccio configuration and
 # certificate request files into the image
 #
-sed -e 's/^  //' <<"EOF" >>Dockerfile.vrd
+sed -e 's/^  //' <<"EOF" >>vrd/Dockerfile.vrd
 
-  COPY config.yaml /home/vrduser/.config/verdaccio/
-  COPY certreq.cfg /tmp/
-  COPY vrdstart /usr/bin/
-  COPY vrdpasswd /usr/bin/
+  COPY vrd/config.yaml /home/vrduser/.config/verdaccio/
+  COPY vrd/certreq.cfg /tmp/
+  COPY vrd/vrdstart /usr/bin/
+  COPY vrd/vrdpasswd /usr/bin/
 
   RUN chmod 755 /usr/bin/vrdstart /usr/bin/vrdpasswd
 

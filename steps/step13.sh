@@ -1,7 +1,7 @@
 #
 # Add commands to sign the HTTPS server certificate.
 #
-sed -e 's/^  //' <<"EOF" >>Dockerfile.vrd
+sed -e 's/^  //' <<"EOF" >>vrd/Dockerfile.vrd
 
   RUN VRD=/home/vrduser/.config/verdaccio \
     && openssl genrsa \

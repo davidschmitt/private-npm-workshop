@@ -6,7 +6,7 @@
 #   * Install the Verdaccio software
 #   * Create the Verdaccio configuration directory
 #
-sed -e 's/^  //' <<"EOF" >Dockerfile.vrd
+sed -e 's/^  //' <<"EOF" >vrd/Dockerfile.vrd
 
   FROM vrdbase:latest
   RUN mkdir /vrdmount \

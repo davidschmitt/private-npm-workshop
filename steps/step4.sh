@@ -3,7 +3,8 @@
 #
 # Begin to create a configuration file we can copy into our Docker image.
 #
-sed -e 's/^  //' <<"EOF" >config.yaml
+mkdir vrd &&
+sed -e 's/^  //' <<"EOF" >vrd/config.yaml
 
   # Look here for more config file examples:
   # https://github.com/verdaccio/verdaccio/tree/master/conf

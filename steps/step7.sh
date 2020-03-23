@@ -1,7 +1,7 @@
 #
 # Add logging related settings to the Verdaccio configuration
 #
-sed -e 's/^  //' <<"EOF" >>config.yaml
+sed -e 's/^  //' <<"EOF" >>vrd/config.yaml
 
   middlewares:
     audit:

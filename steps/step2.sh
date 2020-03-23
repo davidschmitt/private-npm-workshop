@@ -15,7 +15,7 @@ FROM centos:centos7
 
 RUN echo "clean_requirements_on_remove=1" >>/etc/yum.conf \
   && yum update -y \
-  && curl -sL https://rpm.nodesource.com/setup_10.x | bash - \
+  && curl -sL https://rpm.nodesource.com/setup_12.x | bash - \
   && yum install -y nodejs openssl httpd-tools \
   && yum clean all \
   && rm -rf /var/cache/yum \

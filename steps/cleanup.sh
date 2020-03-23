@@ -6,5 +6,6 @@ then
   docker stop vrdcontainer 2>/dev/null
   docker rm vrdcontainer 2>/dev/null
   docker volume rm vrdstorage 2>/dev/null
+  docker network rm vrdnet 2>/dev/null
 fi
-rm -rf Dockerfile.base Dockerfile.vrd config.yaml certreq.cfg vrdpasswd vrdstart
+rm -rf Dockerfile.base vrd pkg1

@@ -1,7 +1,7 @@
 #
 # Add package related settings to the Verdaccio configuration.
 #
-sed -e 's/^  //' <<"EOF" >>config.yaml
+sed -e 's/^  //' <<"EOF" >>vrd/config.yaml
 
   # a list of other known repositories we can talk to
   uplinks:

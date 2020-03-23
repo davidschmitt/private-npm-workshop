@@ -2,14 +2,14 @@
 # The NPM HTTPS server needs a signed certificate.
 # Create the certificate configuration here.
 #
-sed -e 's/^  //' <<"EOF" >certreq.cfg
+sed -e 's/^  //' <<"EOF" >vrd/certreq.cfg
 
   [dn]
-  CN=localhost
+  CN=vrdcontainer
   [req]
   distinguished_name=dn
   [EXT]
-  subjectAltName=DNS:localhost
+  subjectAltName=DNS:vrdcontainer
   keyUsage=digitalSignature
   extendedKeyUsage=serverAuth
 

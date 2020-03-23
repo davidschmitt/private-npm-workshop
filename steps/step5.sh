@@ -1,7 +1,7 @@
 #
 # Add HTTPS server related settings to the Verdaccio configuration
 #
-sed -e 's/^  //' <<"EOF" >>config.yaml
+sed -e 's/^  //' <<"EOF" >>vrd/config.yaml
 
   listen: https://0.0.0.0:4873/
 

@@ -1,7 +1,7 @@
 #
 # Create a startup script that ensures all directories exist
 #
-sed -e 's/^  //' <<"EOF" >vrdstart
+sed -e 's/^  //' <<"EOF" >vrd/vrdstart
   #!/bin/bash
 
   mkdir -p /vrdmount/storage
