@@ -1,7 +1,8 @@
 #
 #
 # Build and publish the first package to the private NPM registry.
-# When prompted, enter "pubuser" for the username, and the password
-# you entered earlier (e.g. "password1")
+#
+# Follow the instructions provided to sign into the NPM registry
+# using the publisher credentials.
 #
 docker run -it --net vrdnet pkg1image:latest

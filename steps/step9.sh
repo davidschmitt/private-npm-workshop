@@ -1,5 +1,9 @@
 #
-# Create a startup script that ensures all directories exist
+# Create a helper script to:
+#
+#   * Ensure Verdaccio storage directories
+#   * Initialize the htpasswd file and set correct permissions
+#   * Start the Verdaccio NPM registry
 #
 sed -e 's/^  //' <<"EOF" >vrd/vrdstart
   #!/bin/bash

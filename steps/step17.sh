@@ -1,10 +1,10 @@
 #
-# Start the private NPM repo container and mount the storage volume
+# Actually start the private NPM registry, including:
 #
-# We create a separate network so that other containers can reach it easily by name.
-# We also publish the port externally so external clients could also reach it.
+#   * Create a network to help other containers reach this one by name
+#   * Mount the storage for the published packages
+#   * Expose the NPM registry port externally so it can be accessed outside docker
 #
-
 docker network create vrdnet &&
 
 docker run --restart always -d --net vrdnet --name vrdcontainer -p "4873:4873/tcp" \

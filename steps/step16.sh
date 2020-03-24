@@ -1,5 +1,6 @@
 #
-# We don't want the packages to disappear every time we re-build the image
-# So here we create a docker volume to hold our published packages.
+# Create a docker volume to hold our published packages.
+# This ensures the package files persist even when the container
+# is restarted.
 #
 docker volume create vrdvolume

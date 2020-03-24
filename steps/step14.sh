@@ -1,5 +1,5 @@
 #
-# Since all earlier commands were performed as root,
+# Since all earlier Dockerfile commands were performed as root,
 # ensure file ownership is changed to the non-privileged user
 #
 sed -e 's/^  //' <<"EOF" >>vrd/Dockerfile.vrd

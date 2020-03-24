@@ -1,6 +1,9 @@
 #
-# Add commands copy the Verdaccio configuration and
-# certificate request files into the image
+# Add Dockerfile commands which install:
+#
+#   * the Verdaccio configuration
+#   * the certificate request file
+#   * the helper shell scripts
 #
 sed -e 's/^  //' <<"EOF" >>vrd/Dockerfile.vrd
 

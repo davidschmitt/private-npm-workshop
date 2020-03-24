@@ -1,6 +1,7 @@
 #
-# When prompted, pick a password for the blduser who
-# needs read-only access to packages (e.g. "password2")
-# You will need this password later, so please remember it.
+# Create NPM credentials for the user who will consume packages.
 #
-docker exec -it vrdcontainer //usr/bin/vrdpasswd blduser
+# "password1" is used to keep this workshop simple and is not
+# suitable for production use.
+#
+docker exec -it vrdcontainer //usr/bin/vrdpasswd blduser password1

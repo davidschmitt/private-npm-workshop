@@ -1,5 +1,5 @@
 #
-# Add the compiler configuration for our published package
+# Add the TypeScript compiler configuration for our published package
 #
 sed -e 's/^  //' <<"EOF" >pkg1/tsconfig.json
 

@@ -1,7 +1,7 @@
 #
 # Create a Docker file for the base docker image.
 # Later we will extend this base image for the NPM private repo
-# and for the devops build images
+# and for the devops package images
 #
 # * For simplicity use CentOS7 as the base OS image.
 # * Install NodeJS

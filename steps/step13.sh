@@ -1,5 +1,5 @@
 #
-# Add commands to sign the HTTPS server certificate.
+# Add Dockerfile commands to sign the HTTPS server certificate.
 #
 sed -e 's/^  //' <<"EOF" >>vrd/Dockerfile.vrd
 

@@ -5,11 +5,11 @@
 sed -e 's/^  //' <<"EOF" >vrd/certreq.cfg
 
   [dn]
-  CN=vrdcontainer
+  CN=localhost
   [req]
   distinguished_name=dn
   [EXT]
-  subjectAltName=DNS:vrdcontainer
+  subjectAltName=DNS:localhost
   keyUsage=digitalSignature
   extendedKeyUsage=serverAuth
 

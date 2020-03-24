@@ -1,7 +1,7 @@
 #
 # Our private NPM repository will be running [Verdaccio](https://verdaccio.org).
 #
-# Begin to create a configuration file we can copy into our Docker image.
+# Begin to create a configuration file we can copy into the Docker image.
 #
 mkdir vrd &&
 sed -e 's/^  //' <<"EOF" >vrd/config.yaml
@@ -15,6 +15,7 @@ sed -e 's/^  //' <<"EOF" >vrd/config.yaml
   # path to a directory with plugins to include
   plugins: /vrdmount/plugins
 
+  # Simple user/password based authentication
   auth:
     htpasswd:
       # Location of user credentials

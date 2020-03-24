@@ -1,5 +1,5 @@
 #
-# Create the Dockerfile for the image used to publish our first package
+# Create the Dockerfile for the image used to publish the first package
 #
 sed -e 's/^  //' <<"EOF" >pkg1/Dockerfile.pkg1
 

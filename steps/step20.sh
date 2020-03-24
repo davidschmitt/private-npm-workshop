@@ -1,7 +1,7 @@
 #
-# Initialize the package we plan to publish
-# Notice the NPM environment setup to point the @workshop scope
-# to our private NPM registry
+# Initialize the Node package to be published
+#
+# Notice the package scope is set to @workshop
 #
 mkdir -p pkg1 &&
 sed -e 's/^  //' <<"EOF" >pkg1/package.json

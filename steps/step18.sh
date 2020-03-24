@@ -1,8 +1,7 @@
 #
-# Add NPM credentials for trusted users.  
+# Create NPM credentials for the user who will publish packages.
 #
-# When prompted, pick a password for the pubuser who
-# needs write access to publish packages (e.g. "password1")
-# You will need this password later, so please remember it.
+# "password1" is used to keep this workshop simple and is not
+# suitable for production use.
 #
-docker exec -it vrdcontainer //usr/bin/vrdpasswd pubuser
+docker exec -it vrdcontainer //usr/bin/vrdpasswd pubuser password1
