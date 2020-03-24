@@ -1,4 +1,4 @@
 #
+# Create the docker image used to build and publish our first package
 #
-#
-docker run -it --net vrdnet pkg1image:latest /bin/bash
+docker build -t "pkg1image:latest" -f pkg1/Dockerfile.pkg1 .

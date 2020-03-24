@@ -14,14 +14,11 @@ sed -e 's/^  //' <<"EOF" >pkg1/package.json
       "dist"
     ],
     "scripts": {
-      "prepublishOnly": "npm run build",
-      "build": "npm run tsc",
-      "prebuild": "npm install && npm run setscope && npm run setstrict && npm run login",
-      "setscope": "npm set @workshop:registry=https://vrdcontainer:4873/",
-      "setstrict": "npm set strict-ssl=false",
-      "login": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && npm adduser --scope=@workshop"
+      "prepublishOnly": "npm install && npx tsc"
     },
     "dependencies": {
+    },
+    "devDependencies": {
       "typescript": "~3.7.5"
     }
   }

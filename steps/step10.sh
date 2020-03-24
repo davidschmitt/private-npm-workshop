@@ -4,6 +4,7 @@
 sed -e 's/^  //' <<"EOF" >vrd/vrdpasswd
   #!/bin/bash
 
-  /bin/htpasswd /vrdmount/.htpasswd "$1"
+  /bin/htpasswd /vrdmount/.htpasswd "$1" &&
+  cat /vrdmount/.htpasswd
 
 EOF

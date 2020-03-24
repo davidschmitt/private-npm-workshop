@@ -1,13 +1,13 @@
 #
-# Create the Dockerfile for the image used to publish our first package
+# Create a script to help us log into the NPM registry, build and publish the
+# first package.
 #
-sed -e 's/^  //' <<"EOF" >pkg1/Dockerfile.pkg1
-
-  FROM vrdbase:latest
-  COPY pkg1/ /home/vrduser/pkg1/
-  RUN chown -R vrduser:vrduser /home/vrduser
-  USER vrduser
-  WORKDIR /home/vrduser/pkg1
-  CMD [ "/usr/bin/npm", "publish" ]
+sed -e 's/^  //' <<"EOF" >pkg1/publishpkg1
+  #!/bin/bash
+  npm set '@workshop:registry=https://vrdcontainer:4873' &&
+  npm set strict-ssl=false &&
+  export NODE_TLS_REJECT_UNAUTHORIZED=0 &&
+  npm adduser --scope=@workshop &&
+  npm publish
 
 EOF
