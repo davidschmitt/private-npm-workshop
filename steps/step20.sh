@@ -10,6 +10,8 @@ sed -e 's/^  //' <<"EOF" >pkg1/package.json
     "name": "@workshop/pkg1",
     "version": "1.0.0",
     "description": "Workshop Package for Publishing to Private NPM Repo",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "files": [
       "dist"
     ],

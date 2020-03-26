@@ -6,6 +6,6 @@ sed -e 's/^  //' <<"EOF" >vrd/vrdpasswd
   #!/bin/bash
 
   echo "Please enter the following password for $1: $2"
-  /bin/htpasswd /vrdmount/.htpasswd "$1" &&
+  /bin/htpasswd /vrdmount/.htpasswd "$1"
 
 EOF

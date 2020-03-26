@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "$1" && rm -rf Dockerfile.base vrd pkg1
+cd "$1" && rm -rf Dockerfile.base vrd pkg1 pkg2
 docker stop vrdcontainer 2>/dev/null
 docker rm vrdcontainer 2>/dev/null
 docker network rm vrdnet 2>/dev/null
